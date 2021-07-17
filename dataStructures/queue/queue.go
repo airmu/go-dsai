@@ -1,6 +1,9 @@
 package queue
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // FIFO队列
 
@@ -52,14 +55,14 @@ func (q *Queue) Push(data interface{}) {
 }
 
 // 出队,空队列时返回nil
-func (q *Queue) Pop() interface{} {
+func (q *Queue) Pop() (interface{}, error) {
 	if q.len == 0 {
-		return nil
+		return nil, errors.New("队列为空")
 	}
 	nd := q.head.data
 	q.head = q.head.next
 	q.len--
-	return nd
+	return nd, nil
 }
 
 func (q *Queue) Size() int {

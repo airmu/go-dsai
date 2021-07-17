@@ -6,5 +6,7 @@ import (
 
 func main() {
 	// stack.TestStack()
-	linked.TestDxLinked()
+	// linked.TestDxLinked()
+	// queue.TestQueue()
+	linked.TestDLinked()
 }
