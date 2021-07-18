@@ -2,6 +2,7 @@ package main
 
 import (
 	"go-dsai/dataStructures/linked"
+	"go-dsai/dataStructures/tree"
 )
 
 func main() {
@@ -9,4 +10,5 @@ func main() {
 	// linked.TestDxLinked()
 	// queue.TestQueue()
 	linked.TestDLinked()
+	tree.TestTree()
 }
