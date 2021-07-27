@@ -1,6 +1,6 @@
 package main
 
-import "go-dsai/dataStructures/heap"
+import "go-dsai/dataStructures/tree"
 
 func main() {
 	// stack.TestStack()
@@ -10,5 +10,7 @@ func main() {
 	// tree.TestTree()
 
 	// heap.TestHeap()
-	heap.TestHeap2()
+	// heap.TestHeap2()
+	// tree.TestFullTree()
+	tree.TestBiSeachTree()
 }
