@@ -108,19 +108,25 @@ func (bt *BiSeachTree) removeNode(node *SeachTreeNode, key int) *SeachTreeNode {
 		} else if node.rightChild == nil && node.leftChild != nil {
 			node = node.leftChild
 		} else {
-			// 寻找待删除节点左子树最大值（最大值一定是左子树最右边的节点）
-			tempTree := node.leftChild
-			tempPtTree := node
-			for tempTree.rightChild != nil {
-				tempPtTree = tempTree
-				tempTree = tempTree.rightChild
+			if node.leftChild.rightChild == nil {
+				rnd := node.rightChild
+				node = node.leftChild
+				node.rightChild = rnd
+			} else {
+				// 寻找待删除节点左子树最大值（最大值一定是左子树最右边的节点）
+				tempTree := node.leftChild
+				tempPtTree := node
+				for tempTree.rightChild != nil {
+					tempPtTree = tempTree
+					tempTree = tempTree.rightChild
+				}
+				nodeRightChild := node.rightChild
+				nodeLeftChild := node.leftChild
+				node = tempTree
+				tempPtTree.rightChild = tempTree.leftChild
+				node.leftChild = nodeLeftChild
+				node.rightChild = nodeRightChild
 			}
-			nodeRightChild := node.rightChild
-			nodeLeftChild := node.leftChild
-			node = tempTree
-			tempPtTree.rightChild = tempTree.leftChild
-			node.leftChild = nodeLeftChild
-			node.rightChild = nodeRightChild
 		}
 	}
 	return node
